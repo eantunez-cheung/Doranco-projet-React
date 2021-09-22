@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Accueil from "./routes/Accueil.jsx";
+import Recette from "./routes/Recette.jsx";
+import Splash from "./routes/Splash.jsx";
+import Favoris from "./routes/Favoris.jsx";
+import Ajouter from "./routes/Ajouter.jsx";
+import Profil from "./routes/Profil.jsx";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/Accueil" render={() => <Accueil />} />
+          <Route exact path="/Recette" render={() => <Recette />} />
+          <Route exact path="/" render={() => <Splash />} />
+          <Route exact path="/Favoris" render={() => <Favoris />} />
+          <Route exact path="/Ajouter" render={() => <Ajouter />} />
+          <Route exact path="/Profil" render={() => <Profil />} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

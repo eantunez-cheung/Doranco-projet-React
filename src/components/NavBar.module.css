@@ -1,0 +1,20 @@
+.nvstyle {
+  position: relative !important;
+  background-color: rgba(235, 234, 235, 0.7) !important;
+}
+
+.button i {
+  color: #70716f;
+}
+
+.activeMenu {
+  background: #70716f !important;
+}
+.activeMenu i {
+  color: #ebeaeb;
+}
+
+.logo{
+    padding-left: 12px;
+    padding-right: 12px;
+}

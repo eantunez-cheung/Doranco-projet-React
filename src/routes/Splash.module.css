@@ -1,0 +1,15 @@
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    height: 100vh;
+  }
+  
+.page img {
+    width: 173px;
+    height: 131px;
+    background: #ffffff;
+  }
+  
+  
