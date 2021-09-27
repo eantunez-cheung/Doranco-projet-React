@@ -1,0 +1,43 @@
+.imageContainer {
+    position: absolute;
+    width: 100vw;
+    height: 222px;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.firstLineImageContainer {
+    display: flex;
+  }
+
+.title {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    padding: 13px;
+    margin-top: 16px;
+    border-radius: 0px 10px 10px 0px;
+    color: #70716f;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.button {
+    background: rgba(112, 113, 111, 0.6) !important;
+    width: 53px;
+    height: 53px;
+    margin-top: 16px !important;
+    border-radius: 0 !important;
+}
+
+.button i {
+    color: #EBEAEB;
+
+}

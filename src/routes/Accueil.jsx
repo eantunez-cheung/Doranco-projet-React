@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import './Accueil.module.css'
+import styles from "./Accueil.module.css";
 
 import Thumbnail from "../components/Thumbnail.jsx";
 import { db } from "../firebase";
 
 import NavBar from "../components/NavBar.jsx";
+import { StylesContext } from "@material-ui/styles";
 
 export default () => {
   const [RecetteThumbnail, setRecetteThumbnail] = useState([]);
+
   useEffect(() => {
     const fetchRecetteThumbnail = async () => {
       const snapshot = await db.collection("Thumbnails").get();
@@ -28,6 +30,7 @@ export default () => {
       {RecetteThumbnail.map((thumbnail) => (
         <Thumbnail
           key={`thumbnail-${thumbnail.id}`}
+          id={thumbnail.id}
           title={thumbnail.title}
           time={thumbnail.time}
           favorite={thumbnail.favorite}

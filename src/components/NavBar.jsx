@@ -19,35 +19,38 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     width: '100vw',
     bottom: 0,
+    borderRadius: 0,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
+  button: {
     flexGrow: 1,
+    borderRadius: 0,
+  },
+  toolbarWrapper: {
+      paddingLeft: 0,
+      paddingRight: 0,
   },
 }));
 
-export default function NavBar({ activeMenu = "accueil" }) {
+export default function NavBar({ activeMenu }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar className={styles.nvstyle}>
-        <Toolbar>
-          <Button component={Link} exact to='/Accueil' className={styles.button + ' ' + classes.title + ' ' + (activeMenu === 'accueil' ? styles.activeMenu : '')} alt="home">
+        <Toolbar className={classes.toolbarWrapper}>
+          <Button component={Link} exact to='/Accueil' className={styles.button + ' ' + classes.button + ' ' + (activeMenu === 'accueil' ? styles.activeMenu : '')} alt="home">
             <i class="fas fa-home fa-3x" />
           </Button>
-          <Button component={Link} exact to='/Ajouter' className={styles.button + ' ' + classes.title + ' ' + (activeMenu === 'ajouter' ? styles.activeMenu : '')} alt="add">
+          <Button component={Link} exact to='/Ajouter' className={styles.button + ' ' + classes.button + ' ' + (activeMenu === 'ajouter' ? styles.activeMenu : '')} alt="add">
             <i class="fas fa-plus-square fa-3x" />
           </Button>
           <Typography className={styles.logo}>
             <img src={logo} alt="logo" />
           </Typography>
-          <Button component={Link} exact to='/Favoris' className={styles.button + ' ' + classes.title + ' ' + (activeMenu === 'favorite' ? styles.activeMenu : '')} alt="favorite">
+          <Button component={Link} exact to='/Favoris' className={styles.button + ' ' + classes.button + ' ' + (activeMenu === 'favorite' ? styles.activeMenu : '')} alt="favorite">
             <i class="fas fa-heart fa-3x" />
           </Button>
-          <Button component={Link} exact to='/Profil' className={styles.button + ' ' + classes.title + ' ' + (activeMenu === 'profile' ? styles.activeMenu : '')} alt="profile">
+          <Button component={Link} exact to='/Profil' className={styles.button + ' ' + classes.button + ' ' + (activeMenu === 'profile' ? styles.activeMenu : '')} alt="profile">
             <i class="fas fa-user fa-3x" />
           </Button>
         </Toolbar>

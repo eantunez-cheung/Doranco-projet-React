@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/Accueil" render={() => <Accueil />} />
-          <Route exact path="/Recette" render={() => <Recette />} />
+          <Route exact path="/Recette/:id" component={Recette} />
           <Route exact path="/" render={() => <Splash />} />
           <Route exact path="/Favoris" render={() => <Favoris />} />
           <Route exact path="/Ajouter" render={() => <Ajouter />} />
