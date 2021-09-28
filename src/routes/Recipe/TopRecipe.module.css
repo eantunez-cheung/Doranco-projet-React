@@ -23,6 +23,7 @@
     width: fit-content;
     padding: 13px;
     margin-top: 16px;
+    margin-bottom: 0;
     border-radius: 0px 10px 10px 0px;
     color: #70716f;
     font-weight: bold;
@@ -39,5 +40,10 @@
 
 .button i {
     color: #EBEAEB;
+}
 
+.secondLineImageContainer i {
+    padding: 13px;
+    color: #c55252;
+    margin-top: 97px;
 }

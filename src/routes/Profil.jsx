@@ -1,9 +1,9 @@
 import NavBar from '../components/NavBar.jsx';
-export default function Accueil () {
+export default function Accueil ({isConnected}) {
     return (
         <div>
             <h3>Page du profil</h3>
-            <NavBar activeMenu="profile"/>
+            <NavBar activeMenu="profile" isConnected={isConnected} />
         </div>
     )
 }

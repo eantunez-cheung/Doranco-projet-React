@@ -1,0 +1,77 @@
+.container {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    backdrop-filter: blur(15px);
+}
+
+.Containerconnection {
+    background: #FFFFFFCC;
+}
+
+.title {
+    color: #70716f;
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+}
+
+.email {
+    padding: 21px;
+    padding-bottom: 0;
+}
+
+.email p {
+    margin: 0;
+    color: #70716f;
+    font-size: 15px;
+}
+
+.email input {
+    padding-left: 10px;
+    width: -webkit-fill-available;
+    height: 40px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.password {
+    padding: 21px;
+    padding-bottom: 0;
+}
+
+.password p {
+    margin: 0;
+    color: #70716f;
+    font-size: 15px;
+}
+
+.password input {
+    padding-left: 10px;
+    width: -webkit-fill-available;
+    height: 40px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.btnConnection {
+    margin-inline-start: 30px;
+    margin-inline-end: 30px;
+    width: -webkit-fill-available;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 7px rgb(0 0 0 / 25%);
+    height: 50px;
+    margin-top: 32px;
+    font-size: 20px;
+    color: #70716f;
+    background: #EBEAEB;
+}
+
+.linkRegister {
+    margin: 0;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    text-align: center;
+}

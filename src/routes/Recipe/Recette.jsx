@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../components/NavBar.jsx";
-import { db } from "../firebase";
+import NavBar from "../../components/NavBar";
+import { db } from "../../firebase";
 import styles from "./Recette.module.css";
-import { Button } from "@material-ui/core";
+import TopRecipe from "./TopRecipe";
 
 export default function Recette(props) {
   const [recipe, setRecipe] = useState({});
@@ -12,8 +12,6 @@ export default function Recette(props) {
   useEffect(() => {
     getRecipe();
   }, []);
-
-  console.log(recipe);
 
   const getRecipe = () => {
     db.collection("Thumbnails")
@@ -29,15 +27,7 @@ export default function Recette(props) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.imageContainer}>
-        <img src={recipe.image} className={styles.image} />
-      </div>
-      <div className={styles.firstLineImageContainer}>
-        <Button className={styles.button}>
-          <i class="fas fa-arrow-left fa-2x"></i>
-        </Button>
-        <p className={styles.title}>{recipe.title}</p>
-      </div>
+      <TopRecipe title={recipe.title} image={recipe.image} favorite={recipe.favorite} />
       <NavBar activeMenu="" />
     </div>
   );
