@@ -1,4 +1,4 @@
-import NavBar from '../../components/NavBar.jsx';
+import NavBar from '../../components/navBar/NavBar.jsx';
 export default function Ajouter ({isConnected}) {
     return (
         <div>

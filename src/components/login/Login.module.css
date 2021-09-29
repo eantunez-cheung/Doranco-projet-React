@@ -1,0 +1,69 @@
+.container {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    backdrop-filter: blur(15px);
+}
+
+.containerLogin {
+    background: #FFFFFFCC;
+    left: 0;
+    margin-top: 159px;
+}
+
+.containerLogin p {
+    font-weight: bold;
+    margin: 0;
+    color: #70716f;
+    font-size: 15px;
+}
+
+.containerLogin input {
+    padding-left: 10px;
+    width: -webkit-fill-available;
+    height: 40px;
+    margin-top: 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.title {
+    text-align: center;
+    font-size: 20px !important;
+    padding-top: 13px;
+}
+
+.email {
+    padding: 21px;
+    padding-bottom: 0;
+}
+
+.password {
+    padding: 21px;
+    padding-bottom: 0;
+}
+
+.btnConnection {
+    margin-inline-start: 30px;
+    margin-inline-end: 30px;
+    width: -webkit-fill-available;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 0px 7px rgb(0 0 0 / 25%);
+    height: 50px;
+    margin-top: 32px;
+    font-size: 20px;
+    color: #70716f;
+    background: #EBEAEB;
+    font-weight: bold;
+}
+
+.linkRegister {
+    color: #438EB9 !important;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}

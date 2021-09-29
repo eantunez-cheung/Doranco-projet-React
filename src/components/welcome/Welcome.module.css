@@ -1,0 +1,27 @@
+.container {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    backdrop-filter: blur(15px);
+}
+
+.containerWelcome {
+    background: #FFFFFFCC;
+    left: 0;
+    margin-top: 252px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.containerWelcome p {
+    font-weight: bold;
+    margin: 0;
+    color: #70716f;
+    font-size: 30px;
+}
+
+.containerWelcome i {
+    color: #70716f;
+}

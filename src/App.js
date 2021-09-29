@@ -11,12 +11,16 @@ import { useState } from "react";
 
 function App() {
   const [isConnected, setIsConnected] = useState(false)
+  const [user, setUser] = useState('')
+
+  console.log(user)
+
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/Accueil" render={() => <Accueil connected={{isConnected: isConnected}} />} />
-          <Route exact path="/Recette/:id" component={Recette} />
+          <Route exact path="/Accueil" render={() => <Accueil connected={{isConnected: isConnected, setIsConnected}} setUser={setUser} />} />
+          <Route exact path="/Recette/:id" render={(props) => <Recette {...props} isConnected={isConnected} />} />
           <Route exact path="/" render={() => <Splash />} />
           <Route exact path="/Favoris" render={() => <Favoris isConnected={isConnected} />} />
           <Route exact path="/Ajouter" render={() => <Ajouter isConnected={isConnected} />} />
