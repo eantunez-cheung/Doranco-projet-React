@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/navBar/NavBar";
 import { db } from "../../firebase";
-import styles from "./Recette.module.css";
+import styles from "./recipe.module.css";
 import TopRecipe from "./TopRecipe";
 
-export default function Recette(props, {isConnected}) {
+export default function Recipe(props) {
   const [recipe, setRecipe] = useState({});
-  console.log(isConnected)
   const url = props.match.url.split("/");
   const id = url[2];
-
 
   useEffect(() => {
     getRecipe();
@@ -30,7 +28,7 @@ export default function Recette(props, {isConnected}) {
   return (
     <div className={styles.container}>
       <TopRecipe title={recipe.title} image={recipe.image} favorite={recipe.favorite} />
-      <NavBar activeMenu="" isConnected={isConnected} />
+      <NavBar activeMenu="" isConnected={props.isConnected} form={props.form}/>
     </div>
   );
 }

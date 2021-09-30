@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Thumbnail.module.css";
 
-export default ({ id, title, time, favorite, difficulty, grade, image }) => {
+export default function Thumbnail({ id, title, time, favorite, difficulty, grade, image }) {
   return (
     <Link to={`/Recette/${id}`} className={styles.link}>
       <div className={styles.container}>

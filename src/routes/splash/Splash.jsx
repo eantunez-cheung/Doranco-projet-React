@@ -1,4 +1,4 @@
-import logo from "../images/logo.svg";
+import logo from "../../images/logo.svg";
 import { Redirect } from "react-router";
 import styles from './Splash.module.css'
 import { useEffect, useState } from "react";

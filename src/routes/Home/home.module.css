@@ -1,6 +1,7 @@
 .container {
     width: 100vw;
     position: absolute;
+    padding-bottom: 61px;
 }
 
 .titlePage {

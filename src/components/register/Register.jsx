@@ -17,7 +17,8 @@ export default function Login({ setForm }) {
         if (password === confirmPassword) {
             auth.createUserWithEmailAndPassword(email, confirmPassword)
                 .then(() => {
-                    db.collection("users").doc(email).set({
+                    db.collection("users").doc().set({
+                        email: email,
                         fullName: fullName,
                     })
                         .then(() => {

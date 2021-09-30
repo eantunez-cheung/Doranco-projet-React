@@ -1,5 +1,5 @@
-import NavBar from '../components/navBar/NavBar.jsx';
-export default function Accueil ({isConnected}) {
+import NavBar from '../../components/navBar/NavBar.jsx';
+export default function Profile ({isConnected}) {
     return (
         <div>
             <h3>Page du profil</h3>

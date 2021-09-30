@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Accueil.module.css";
+import styles from "./home.module.css";
 import Thumbnail from "../../components/recipeThumbnail/Thumbnail.jsx";
 import { db } from "../../firebase";
 import NavBar from "../../components/navBar/NavBar.jsx";
@@ -7,12 +7,13 @@ import Login from "../../components/login/Login";
 import Register from '../../components/register/Register';
 import Welcome from "../../components/welcome/Welcome";
 
-export default ({ connected, setUser }) => {
+export default function Home({ connected, user, form }) {
   const [RecetteThumbnail, setRecetteThumbnail] = useState([]);
-  const [form, setForm] = useState('')
-  const [email, setEmail] = useState('')
+  const [userId, setUserId] = useState('')
 
-  setUser(email)
+  if (userId !== user.user && userId !== '' ) {
+    user.setUser(userId)
+  }
 
   useEffect(() => {
     const fetchRecetteThumbnail = async () => {
@@ -44,10 +45,10 @@ export default ({ connected, setUser }) => {
             grade={thumbnail.grade}
           />
         ))}
-        <NavBar activeMenu="accueil" isConnected={connected.isConnected} setForm={setForm} />
+        <NavBar activeMenu="accueil" isConnected={connected.isConnected} form={form} />
       </div>
       {
-        (form === 'login' ? <Login setIsConnected={connected.setIsConnected} setForm={setForm} setUser={setEmail} /> : form === 'register' ? <Register setForm={setForm} /> : form === 'welcome' ? <Welcome user={email} setForm={setForm} /> : '')
+        (form.form === 'login' ? <Login setIsConnected={connected.setIsConnected} form={form} setUser={setUserId} /> : form.form === 'register' ? <Register setForm={form.setForm} /> : form.form === 'welcome' ? <Welcome user={userId} setForm={form.setForm} /> : '')
       }
     </div>
   );

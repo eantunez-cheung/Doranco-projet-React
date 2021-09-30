@@ -31,15 +31,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBar({ activeMenu, isConnected, setForm }) {
+export default function NavBar({ activeMenu, isConnected, form }) {
   const classes = useStyles();
 
   const handleSubmit = () => {
-    if (setForm != null) {
-      setForm('login')
+    if (form != null && !isConnected) {
+      form.setForm('login')
     }
   }
-
 
   return (
     <div className={classes.root}>
