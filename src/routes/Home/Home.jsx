@@ -30,8 +30,8 @@ export default function Home({ connected, user, form }) {
   }, []);
 
   return (
-    <div>
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <div className={styles.containerThumbnail}>
         <p className={styles.titlePage}>Nos dernières recettes</p>
         {RecetteThumbnail.map((thumbnail) => (
           <Thumbnail

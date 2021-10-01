@@ -12,19 +12,19 @@ export default function DifficultyRecipe({ value, onChange = () => null }) {
     return (
         <>
             <button
-                className={(difficulty === 'easy' ? styles.easy : styles.btnDifficulty)}
+                className={styles.btnDifficulty + ' ' + (difficulty === 'easy' ? styles.easy : '')}
                 onClick={handleChange('easy')}
             >
                 Facile
             </button>
             <button
-                className={(difficulty === 'medium' ? styles.medium : styles.btnDifficulty)}
+                className={styles.btnDifficulty + ' ' + (difficulty === 'medium' ? styles.medium : '')}
                 onClick={handleChange('medium')}
             >
                 Moyen
             </button>
             <button
-                className={(difficulty === 'hard' ? styles.hard : styles.btnDifficulty)}
+                className={styles.btnDifficulty + ' ' + (difficulty === 'hard' ? styles.hard : '')}
                 onClick={handleChange('hard')}
             >
                 Difficile

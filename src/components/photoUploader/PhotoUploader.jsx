@@ -41,6 +41,7 @@ export default function PhotosUploader({
             accept='image/*'
           />
           <i className='far fa-images'></i>
+          {/* <p>Ajouter une photo</p> */}
         </label>
       </>
     )
