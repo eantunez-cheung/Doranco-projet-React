@@ -45,8 +45,8 @@ export default function Home({ connected, user, form }) {
             grade={thumbnail.grade}
           />
         ))}
-        <NavBar activeMenu="accueil" isConnected={connected.isConnected} form={form} />
       </div>
+        <NavBar activeMenu="accueil" isConnected={connected.isConnected} form={form} />
       {
         (form.form === 'login' ? <Login setIsConnected={connected.setIsConnected} form={form} setUser={setUserId} /> : form.form === 'register' ? <Register setForm={form.setForm} /> : form.form === 'welcome' ? <Welcome user={userId} setForm={form.setForm} /> : '')
       }

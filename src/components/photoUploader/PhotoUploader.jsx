@@ -59,7 +59,7 @@ export default function PhotosUploader({
         />
         <img alt={photoName} src={photo} />
       </div>
-      <button className='btn btn-red' onClick={removeFile}>
+      <button className={styles.btnRemove} onClick={removeFile}>
         Retirer image
       </button>
     </>

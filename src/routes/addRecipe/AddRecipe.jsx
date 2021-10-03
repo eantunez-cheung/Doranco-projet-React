@@ -9,22 +9,20 @@ import { db, storage } from '../../firebase'
 import uid from 'short-uuid'
 
 export default function AddRecipe({ isConnected, user }) {
-    const [userName, setUserName] = useState({})
+    const [userName, setUserName] = useState('')
     const [recipeName, setRecipeName] = useState('')
     const [photo, setPhoto] = useState(null)
     const [difficulty, setDifficulty] = useState('')
-    const [preparationTime, setPreparationTime] = useState('')
-    const [restTime, setRestTime] = useState('')
-    const [cookingTime, setCookingTime] = useState('')
-    const [nbPeople, setNbPeople] = useState('')
+    const [preparationTime, setPreparationTime] = useState(0)
+    const [restTime, setRestTime] = useState(0)
+    const [cookingTime, setCookingTime] = useState(0)
+    const [nbPersons, setNbPersons] = useState(0)
     const [ingredients, setIngredients] = useState([])
     const [steps, setSteps] = useState([])
 
     useEffect(() => {
         getUser();
     }, []);
-
-    console.log(userName)
 
     const getUser = () => {
         var docRef = db.collection("users").doc(user);
@@ -47,28 +45,34 @@ export default function AddRecipe({ isConnected, user }) {
             await storage.ref(ref).put(photo)
             const urlImage = await storage.ref(ref).getDownloadURL()
 
-            const doc = await db.collection('recipes').add({
-                recipeName,
+            db.collection('recipes').doc().set({
+                name: recipeName,
                 author: {
-                  username: userName,
+                    username: userName,
                 },
-                urlImage,
+                image: urlImage,
                 duration: {
-                  cooking: Number(cookingTime),
-                  rest: Number(restTime),
-                  preparation: Number(preparationTime),
+                    cooking: Number(cookingTime),
+                    rest: Number(restTime),
+                    preparation: Number(preparationTime),
                 },
-                nbPeople,
+                nbPersons: Number(nbPersons),
                 level: difficulty,
                 score: 0,
-                steps,
-              })
-        
-              for (let ingredient of ingredients) {
-                await db
-                  .collection(`recipes/${doc.id}/ingredients`)
-                  .add(ingredient)
-              }
+                steps: steps,
+            })
+                .then((docRef) => {
+                    for (const ingredient in ingredients) {
+                        db.collection('recipes').doc(docRef.id).update({
+                            ingredient,
+                        })
+                    }
+                    console.log("Document written with ID: ", docRef.id);
+                    
+                })
+                .catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
         } catch (e) {
             console.warn(e)
         }
@@ -101,9 +105,9 @@ export default function AddRecipe({ isConnected, user }) {
                 <label htmlFor="cooking">Temps de cuisson (en minutes)</label>
                 <input type="number" id="cooking" onChange={e => setCookingTime(e)} />
             </div>
-            <div className={styles.divNbPeople}>
-                <label htmlFor="nbPeople">Nombre de personnes</label>
-                <input type="number" id="nbPeople" onChange={e => setNbPeople(e)} />
+            <div className={styles.divNbPersons}>
+                <label htmlFor="nbPersons">Nombre de personnes</label>
+                <input type="number" id="nbPersons" onChange={e => setNbPersons(e)} />
             </div>
             <div className={styles.divIngredient}>
                 <label htmlFor="ingredient">Ingrédients</label>

@@ -19,7 +19,7 @@
 }
 
 .group input {
-    width: 114px;
+    width: 114px !important;
     margin: 0;
 }
 
