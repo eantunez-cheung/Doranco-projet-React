@@ -20,6 +20,12 @@ export default function AddRecipe({ isConnected, user }) {
     const [ingredients, setIngredients] = useState([])
     const [steps, setSteps] = useState([])
 
+    const handleRecipeName = e => setRecipeName(e.target.value)
+    const handlePreparationTime = e => setPreparationTime(e.target.value)
+    const handleRestTime = e => setRestTime(e.target.value)
+    const handleCookingTime = e => setCookingTime(e.target.value)
+    const handleNbPersons = e => setNbPersons(e.target.value)
+
     useEffect(() => {
         getUser();
     }, []);
@@ -45,34 +51,29 @@ export default function AddRecipe({ isConnected, user }) {
             await storage.ref(ref).put(photo)
             const urlImage = await storage.ref(ref).getDownloadURL()
 
-            db.collection('recipes').doc().set({
+            const doc = await db.collection('recipes').add({
                 name: recipeName,
                 author: {
-                    username: userName,
+                  username: userName,
                 },
                 image: urlImage,
                 duration: {
-                    cooking: Number(cookingTime),
-                    rest: Number(restTime),
-                    preparation: Number(preparationTime),
+                  cooking: Number(cookingTime),
+                  rest: Number(restTime),
+                  preparation: Number(preparationTime),
                 },
                 nbPersons: Number(nbPersons),
                 level: difficulty,
                 score: 0,
-                steps: steps,
-            })
-                .then((docRef) => {
-                    for (const ingredient in ingredients) {
-                        db.collection('recipes').doc(docRef.id).update({
-                            ingredient,
-                        })
-                    }
-                    console.log("Document written with ID: ", docRef.id);
-                    
-                })
-                .catch((error) => {
-                    console.error("Error adding document: ", error);
-                });
+                steps,
+              })
+        
+              for (let ingredient of ingredients) {
+                await db
+                  .collection(`recipes/${doc.id}/ingredients`)
+                  .add(ingredient)
+              }
+              console.log('succes')
         } catch (e) {
             console.warn(e)
         }
@@ -83,7 +84,7 @@ export default function AddRecipe({ isConnected, user }) {
             <p className={styles.title}>Ajouter une recette</p>
             <div className={styles.divRecipeName}>
                 <label htmlFor="recipeName">Nom de la recette</label>
-                <input type="text" id="recipeName" onChange={e => setRecipeName(e)} />
+                <input type="text" id="recipeName" onChange={e => handleRecipeName(e)} />
             </div>
             <div className={styles.divPhoto}>
                 <label htmlFor="photo">Photo</label>
@@ -95,19 +96,19 @@ export default function AddRecipe({ isConnected, user }) {
             </div>
             <div className={styles.divPreparationTime}>
                 <label htmlFor="preparation">Temps de préparation (en minutes)</label>
-                <input type="number" id="preparation" onChange={e => setPreparationTime(e)} />
+                <input type="number" id="preparation" onChange={e => handlePreparationTime(e)} />
             </div>
             <div className={styles.divRestTime}>
                 <label htmlFor="rest">Temps de repos (en minutes)</label>
-                <input type="number" id="rest" onChange={e => setRestTime(e)} />
+                <input type="number" id="rest" onChange={e => handleRestTime(e)} />
             </div>
             <div className={styles.divCookingTime}>
                 <label htmlFor="cooking">Temps de cuisson (en minutes)</label>
-                <input type="number" id="cooking" onChange={e => setCookingTime(e)} />
+                <input type="number" id="cooking" onChange={e => handleCookingTime(e)} />
             </div>
             <div className={styles.divNbPersons}>
                 <label htmlFor="nbPersons">Nombre de personnes</label>
-                <input type="number" id="nbPersons" onChange={e => setNbPersons(e)} />
+                <input type="number" id="nbPersons" onChange={e => handleNbPersons(e)} />
             </div>
             <div className={styles.divIngredient}>
                 <label htmlFor="ingredient">Ingrédients</label>
